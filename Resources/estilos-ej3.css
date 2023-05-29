@@ -1,0 +1,150 @@
+body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;/*column, column-reverse, row, row-reverse*/
+    align-items: center;
+    justify-content: center;
+}
+
+label{
+    width: 250px;
+    height: 110px;
+    position: relative;
+    display: block;
+    background: #ebebeb;
+    border-radius: 100px;
+    box-shadow:inset 0px 5px 15px rgba(0, 0, 0, 4);
+    cursor: pointer;/*pointer, move, none, help, progress, zoom-in, zoom out, etc.*/
+}
+
+label::after{
+    content: "";
+    width: 90px;
+    height: 90px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: linear-gradient(180deg,#ffcc89, #d8880b);
+    border-radius: 90px;
+    box-shadow: 0px 5px 15px rgba(0,0,0,0,2);
+}
+
+/*ocultamos el checkbox*/
+input {
+    width: 0px;
+    height: 0px;
+    visibility: hidden;
+}
+
+/*cambio de colores si el checkbox es seleccionado*/
+input:checked + label{
+    background: #100f64;
+    }
+
+/*animacion*/
+input:checked + label::after {
+    left: 150px;
+    transform: translateX(-100%);/*rem px ch*/
+    background: linear-gradient (180deg,#736ae9, #0a0347);
+    transition: 2s; /*0.3s*/
+}
+/*efecto estiramiento*/
+label:active:after{
+    width: 130px;
+}
+
+.elemento_cambiante {
+    width: 100vw;
+    height: 100vh;
+    background: #EBEBEB;
+    color: #100f64;
+    z-index:-1;
+    position:absolute;
+    transition: 0.3s;
+}
+/*cambiando la apariencia cuando inpout este checked*/
+input:checked + label+ .elemento_cambiante {
+    background: #343449;
+    color: #dde93d;
+}
+
+label svg {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    top: 25px;
+    left: 130px;
+    z-index: 100;
+}
+
+label svg.luna{
+    left: 170px;
+    fill: #7e7e7e;
+    transition: 0.3s;
+}
+
+ label svg.sol{
+    left: 25px;
+    fill: #7e7e7e;
+    transition: 0.3s;
+}
+
+input:checked + label svg.luna {
+    fill: #fff;
+}
+
+input:checked + label svg.sol {
+    fill: #fff;
+}
+
+/*ejemplos sueltos */
+p:after {
+    content: "Hola, soy Pepe";
+    color: red;
+    font-size: 20px;
+}
+
+div + p {
+    background-color: #100f64;
+    color: #dde93d;
+}
+
+/*Unidades absolutas
+
+cm mm in
+(1 in = 2.54 cm = 96px)
+px pt
+(1 pt = 1/72 in)
+pc [picas]
+(1 pc = 12ct)
+
+Unidades relativas
+
+em: relativo al font-size del elemento
+ex: relativo al tamano x del Font del elemento
+ch: relativo al ancho del cero 0
+rem: relativo al font-size del elemento root
+vw: relativo al 1% del ancho del viewport
+vw: relativo al 1% del alto del viewport
+vmin: relativo al 1% del viewport minimo
+vmax: relativo al 1% del viewport maximo
+%: relativo al elemento padre
+
+viewport es el tamano de la ventana
+
+*/
+
+/* z-index
+
+solo funciona con valores de la propiedad position:
+relative, absolute, fixed, sticky y con items flex
+*/
+
+
+
+
+
+
+
+

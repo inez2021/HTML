@@ -1,0 +1,78 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms</title>
+</head>
+<body>
+    <h1 id="abc">Un formulario</h1>
+    <form action="https://www.pepe.com/regirtro">
+        <fieldset>
+            <legend>Entrada de texto</legend>
+            <p>
+                <label>Usuario</label>
+                <input type="text" id="usuario" autofocus>
+            </p>
+            <p>
+                <label>Contrasena</label>
+                <input type="password" id="pass" placeholder="Tu contrasena">
+            </p>
+            <p>
+                <label>Descripcion</label>
+                <textarea id="desc" rows="4" cols="80">
+                     Escriba
+                </textarea>
+            </p>
+        </fieldset>
+        <fieldset>
+            <legend>Elementos de seleccion</legend>
+            <p>
+                <label>Lista select</label>
+                <select id="mi lista">
+                    <option value="a1">Uno</option>
+                    <option value="a2">Dos</option>
+                    <option value="a3">Tres</option>
+                    <option value="a4">Cuatro</option>
+                </select>
+            </p>
+            <p>
+                <label>Check box</label>
+                <input type="checkbox" id="chkprods" value="hvs">
+                <label for="chkprods">Huevos criollos</label>
+                <input type="checkbox" id="chkjam" value="jam">
+                <label for="chkjam">Jamon</label>
+            </p>
+            <p>
+                <label>Radio buttons</label>
+                <input type="radio" name="radTemperature" id="tempFrio" value="frio">
+                <label for="tempFrio">Frio</label>
+                <input type="radio" name="radTemperature" id="tempTibio" value="tibi" checked>
+                <label for="tempTibio">Tibio</label>
+                <input type="radio" name="radTemperature" id="tempCaliente" value="cali">
+                <label for="tempCaliente">Caliente</label>
+            </p>
+        </fieldset>
+        <fieldset>
+            <legend>Buttons</legend>
+            <p>
+                <input type="submit" value="Registrar">
+                <button type="button">Boton estandar</button>
+                <input type="reset">
+            </p>
+        </fieldset>
+        <fieldset>
+            <legend>Varios</legend>
+            <input type="color" id="color">
+            <br>
+            <input type="date" id="date">
+            <br>
+            <input type="datetime" id="datetime">
+            <br>
+            Edad<input type="number" id="numero" max="10" min="1">
+        </fieldset>
+
+
+    </form>
+</body>
+</html>

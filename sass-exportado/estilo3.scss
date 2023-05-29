@@ -1,0 +1,481 @@
+@import "estilo_extra";
+/*Definicion de variables*/
+
+$bgcolor: lightblue;
+$textcolor: darkblue;
+$fontsize: 18px;
+
+$una-variable:#77ff22;
+$miFont: Helvetica, sans-serif;
+$miColor: red;
+$miFontSize: 22px;
+$miWidth: 680px;
+
+$txt: "ABCxyz";
+
+@mixin nombre-cualquiera {
+    color: brown;
+    font-size: 25px;
+    font-weight: bold;
+    border: 1px solid blueviolet;
+}
+
+@mixin otro-mixin {
+
+}
+
+@mixin bordeador ($coloreishon, $ancho){
+    border: $ancho solid $coloreishon;
+    color: $coloreishon;
+}
+
+/*mixin con argumentos (valores por defecto)*/
+@mixin bordeador2($coloreishon: blue, $ancho: 2px){
+    border: $ancho solid $coloreishon;
+    color: $coloreishon;
+}
+
+@mixin super_mixin($bgcolor: white, $color: black, $border-color: red, $ancho:10px){
+    background-color: $bgcolor;
+    border: $ancho solid $color;
+    color: $color;
+}
+
+@mixin estilizado-especial{
+    @include nombre-cualquiera;
+    @include otro-mixin;
+}
+
+@mixin transformacion($propiedad){
+    -webkit-transform: $propiedad;
+    -ms-transform: $propiedad;
+    transform: $propiedad;
+}
+
+/*Uso de variables*/
+body {
+    background-color: $bgcolor;
+    color: $miColor;
+    font-size: $miFontSize;
+    font-family: $miFont;
+    font: {
+        size: $miFontSize;
+        family: $miFont;
+        weight: bold;
+    }
+
+    text: {
+        align: center;
+        transform: uppercase;
+        overflow: hidden;
+    }
+}
+
+#contenedor {
+    width: $miWidth;
+}
+
+h1{
+    $miColor: green !global;
+    $abc:30px;
+    color: $miColor;
+}
+p {
+    @include nombre-cualquiera;
+    padding: 10px;
+}
+
+/*Uso de anidamiento*/
+nav {
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    li {
+        display:inline-block;
+        @include bordeador(orange , 15px);
+    }
+    a {
+        @include nombre-cualquiera;
+        display: block;
+        padding: 3px 30px;
+        text-decoration: none;
+    }
+}
+
+div {
+    @include bordeador(blue, 5px);
+    
+}
+
+p{
+    a {
+        @include super-mixin($ancho: 3px, $color: red, $border-color: orange);  
+    } 
+}
+
+.caja {
+    @include transformacion(rotate(45deg));
+    background-color: yellow;
+    border: 5px solid yellow;
+    color: black;
+}
+
+.boton-simple {
+    border: none;
+    padding: 15px 30px;
+    text-align: center;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.boton-alerta {
+    @extend .boton-simple;
+    background-color: red;
+}
+
+.boton-submit {
+    @extend .boton-simple;
+    background-color:greenyellow;
+    color: orangered;
+}
+
+/** Funciones en SASS*/
+
+/*cadenas (string)
+texto
+
+"sdfds d 56 545"
+
+"k"
+
+" "
+
+""
+
+NULL
+
+*/
+$txt: "Pepe";
+
+div {
+    @debug "Hola, estoy en el selector div";
+    $cad: quote(Arial);/*"Arial"*/
+    @debug $cad;
+    $cad: unquote($string: "Arial");
+    @debug $cad;
+    /*Veamos el resultado con una condicional*/
+    font-family: $cad, Helvetica, sans-serif;
+
+    /*Para obtener el indice de una subcadena*/
+    $indice: str-index("Hola Pepe", "Pe");/* 6*/
+    @debug $indice;
+    /*Para insertar una subcadena en una cadena */
+    $nuevoString: str-insert($string: "Hola Pepe", $insert: ", soy", $index: 5);
+    $nuevoString: str-insert("Hola Pepe", ", soy", 5);
+    @debug $nuevoString;
+    /*Para obtener la longitud de cadena*/
+    $cadena: "Musica";
+    $longitud: str-length($string: $cadena); /* 6 */
+    @debug $longitud;
+    /*Slice: para extraer una subcadena*/
+    $cad-cortada: str-slice("Hola Pepe", 3, 7); /* "la Pe" */
+    @debug $cad-cortada;
+    /*Para convertir una cadena a mayusculas/minusculas */
+    $res: to-upper-case("Hola a Todos"); /*HOLA A TODOS" */
+    @debug $res;
+    $res: to-lower-case("Hola a Todos"); /*hola a todos" */
+    @debug $res;
+    $red: 44;
+    color:rgb($green: 156, $red: $red, $blue: 225);
+}
+
+p{
+    /*Valor absoluto de un numero */
+    $n: abs(-20); /* 20 */
+    @debug $n;
+    /*Ceil: redondeo al entero superior */
+    $n: ceil(15.45); /* 16 */
+    @debug $n;
+    /*floor: redondeo al entero inferior */
+    $n: floor(15.99); /* 15 */
+    @debug $n;
+    /* Para comparar dos numeros */
+    $resultado: comparable(15px , 9px);/* true */
+    @debug $resultado;
+    $resultado: comparable(100mm , 5cm);/* true */
+    @debug $resultado;
+    $resultado: comparable(35px , 85em);/* false */
+    @debug $resultado;
+
+    /*maximo/minimo*/
+    $val: max(4, 6, 2, 48, -5, 0); /* 48 */
+    @debug $val;
+    $val: min(18, 7, 5, 255, 34,9); /* 5 */
+    @debug $val;
+    color: rgb($val, 0, 200);
+
+    /* Porcentaje */
+    /*
+        0, 1, 0.5, 0.25
+    */
+    $val: percentage(1.3); /* 130 */
+    @debug $val;
+    $val: percentage(0.25); /* 25 */
+    @debug $val;
+    $val: random(); /* 0.45683 */
+    @debug $val;
+    $val: random(); /* 0.9815 */
+    @debug $val;
+    $val: random(6); /* 1 y 6 (inclusivo) */
+    @debug $val;
+
+    $val: round(15.20);
+    @debug $val;
+    $val: round(15.85);
+    @debug $val;
+
+    //$val: call(floor, 15.88);
+    //@debug $val;
+
+    $val: unique-id();
+    @debug $val;
+    $val: unique-id();
+    @debug $val;
+    $val: unique-id();
+    @debug $val;
+
+    //Listas
+    $fuente: Helvetica, Arial, sans-serif;
+    $margen: 0 0 10px 40px;
+    @debug $margen;
+    $otra-lista: 20, (15 0), 5;
+    @debug $otra-lista;
+
+    $lista-vacia: ();
+    @debug $lista-vacia;
+
+    $lista-con-vacios: 10px () 40px 0;
+    @debug $lista-con-vacios;
+
+    $lista-con-vacios: 10px $lista-vacia 40px 0;
+    @debug $lista-con-vacios;
+
+    margin: $lista-con-vacios;
+
+    //Funciones para las listas
+    $cant: length($otra-lista);
+    @debug $cant;
+
+    $cant: length(3 5 9 7 12 3);
+    @debug $cant;
+
+    $elemento: nth(3 5 7 12 45, 2); // 3er 4to 6to 9no 1st 2nd
+    @debug $elemento;
+
+    $elemento: nth($otra-lista, 2); 
+    @debug $elemento;
+
+    $x: set-nth($otra-lista, 2, 56em);
+    @debug $x;
+    @debug $otra-lista;
+
+    $x: set-nth(5 10 15 20 7 30 35, 5, 25);
+    @debug $x;
+
+    $x: join($otra-lista, $fuente);
+    @debug $x;
+    @debug length($x);
+    
+    $x: join($margen, $fuente);
+    @debug $x;
+    @debug length($x);
+
+    $x: join($margen, $fuente, comma); //comma, space, auto
+    @debug $x;
+    @debug length($x);
+
+    $x: append($otra-lista, 88px);
+    @debug $x;
+    @debug length($x);
+
+    $x: append((9, 8, 7), 6);
+    @debug $x;
+    @debug length($x);
+
+    $x: zip($margen, $x);
+    @debug $x;
+
+    $elemento: nth($x, 4); 
+    @debug $elemento;
+
+    $elemento: nth(nth($x, 4), 1); 
+    @debug $elemento;
+
+    //4-D
+    $x: zip($margen, $x);
+
+    $x: zip((a, b, c, d), $x);
+    $x: zip((3em, 5em, 12em, 45em), $x);
+    @debug $x;
+
+    $indice: index($margen, 40px);
+    @debug $indice;
+
+    /*
+    mapas
+    funciones sobre mapas
+    bucles
+    condicionales
+    */
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

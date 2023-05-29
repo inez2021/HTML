@@ -1,0 +1,12 @@
+{
+	"version": 3,
+	"file": "estilo_extra.css",
+	"sources": [
+		"../sass-exportado/estilo_extra.scss"
+	],
+	"sourcesContent": [
+		"html, body, ul, ol {\r\n    margin: 0px;\r\n    padding: 0px;\r\n}"
+	],
+	"names": [],
+	"mappings": ";AAAA,AAAA,IAAI,EAAE,IAAI,EAAE,EAAE,EAAE,EAAE,CAAC;EACf,MAAM,EAAE,GAAG;EACX,OAAO,EAAE,GAAG;CACf"
+}

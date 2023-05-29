@@ -1,0 +1,159 @@
+html, body, ul, ol {
+  margin: 0px;
+  padding: 0px;
+}
+
+/*Definicion de variables*/
+/*mixin con argumentos (valores por defecto)*/
+/*Uso de variables*/
+body {
+  background-color: lightblue;
+  color: red;
+  font-size: 22px;
+  font-family: Helvetica, sans-serif;
+  font-size: 22px;
+  font-family: Helvetica, sans-serif;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  text-overflow: hidden;
+}
+
+#contenedor {
+  width: 680px;
+}
+
+h1 {
+  color: green;
+}
+
+p {
+  color: brown;
+  font-size: 25px;
+  font-weight: bold;
+  border: 1px solid blueviolet;
+  padding: 10px;
+}
+
+/*Uso de anidamiento*/
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+nav li {
+  display: inline-block;
+  border: 15px solid orange;
+  color: orange;
+}
+nav a {
+  color: brown;
+  font-size: 25px;
+  font-weight: bold;
+  border: 1px solid blueviolet;
+  display: block;
+  padding: 3px 30px;
+  text-decoration: none;
+}
+
+div {
+  border: 5px solid blue;
+  color: blue;
+}
+
+p a {
+  background-color: white;
+  border: 3px solid red;
+  color: red;
+}
+
+.caja {
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  background-color: yellow;
+  border: 5px solid yellow;
+  color: black;
+}
+
+.boton-simple, .boton-submit, .boton-alerta {
+  border: none;
+  padding: 15px 30px;
+  text-align: center;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.boton-alerta {
+  background-color: red;
+}
+
+.boton-submit {
+  background-color: greenyellow;
+  color: orangered;
+}
+
+/** Funciones en SASS*/
+/*cadenas (string)
+texto
+
+"sdfds d 56 545"
+
+"k"
+
+" "
+
+""
+
+NULL
+
+*/
+div {
+  /*"Arial"*/
+  /*Veamos el resultado con una condicional*/
+  font-family: Arial, Helvetica, sans-serif;
+  /*Para obtener el indice de una subcadena*/
+  /* 6*/
+  /*Para insertar una subcadena en una cadena */
+  /*Para obtener la longitud de cadena*/
+  /* 6 */
+  /*Slice: para extraer una subcadena*/
+  /* "la Pe" */
+  /*Para convertir una cadena a mayusculas/minusculas */
+  /*HOLA A TODOS" */
+  /*hola a todos" */
+  color: rgb(44, 156, 225);
+}
+
+p {
+  /*Valor absoluto de un numero */
+  /* 20 */
+  /*Ceil: redondeo al entero superior */
+  /* 16 */
+  /*floor: redondeo al entero inferior */
+  /* 15 */
+  /* Para comparar dos numeros */
+  /* true */
+  /* true */
+  /* false */
+  /*maximo/minimo*/
+  /* 48 */
+  /* 5 */
+  color: rgb(5, 0, 200);
+  /* Porcentaje */
+  /*
+      0, 1, 0.5, 0.25
+  */
+  /* 130 */
+  /* 25 */
+  /* 0.45683 */
+  /* 0.9815 */
+  /* 1 y 6 (inclusivo) */
+  margin: 10px 40px 0;
+  /*
+  mapas
+  funciones sobre mapas
+  bucles
+  condicionales
+  */
+}

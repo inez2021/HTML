@@ -1,0 +1,54 @@
+@charset "UTF-8";
+body {
+    background-color: #bcb6d1;
+    color: #2a2740;
+}
+div {
+    background-color: #bf4b4b;
+}
+h1 {
+    background-color: #d9ac4a;
+    color: #2a2740;
+}
+
+.formulario {
+    background-color: #d9ac4a;
+    color: #2a2740;
+}
+
+#unico{
+    color: red;
+}
+
+.texto-con-fondo {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 150px;
+    letter-spacing: 20px;
+    color: transparent;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-image: url("fondo.jpg");
+    background-size: 65%;
+}
+
+#variante1 {
+    border: 10px dotted black;
+    padding: 15px;
+    background:lightblue;
+    background-clip: border-box;
+}
+
+#variante2 {
+    border: 10px dotted black;
+    padding: 15px;
+    background:lightblue;
+    background-clip: padding-box;
+}
+
+#variante3 {
+    border: 10px dotted black;
+    padding: 15px;
+    background:lightblue;
+    background-clip: content-box;
+}
